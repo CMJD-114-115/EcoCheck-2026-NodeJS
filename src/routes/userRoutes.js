@@ -20,11 +20,9 @@ router.get(userUrl, async (req, res) => {
     } catch (err) {
         console.error(err)
     }
-
-
 })
 
-router.post(userUrl, (req, res) => {
+router.post(userUrl, async (req, res) => {
     try {
         const user = new User({
             firstName: req.body.firstName,
@@ -37,18 +35,34 @@ router.post(userUrl, (req, res) => {
         res.status(201).send("Saved user data successfully")
     } catch (err) {
         console.log(err)
-        res.status(500).send("Save data failed with internal server issue")
+        res.status(500).send("Save process failed with internal server issue")
     }
 
 })
 
-router.patch(userUrl, (req, res) => {
-    // User service
+router.patch(`${userUrl}/:id`, async (req, res) => {
+    try {
+        const userId = req.params.id
+        const userData = req.body
 
+        await userService.updateUser(userId, userData)
+        res.status(204).send("User data updated")
+
+    } catch (err) {
+        console.err(err)
+        res.status(500).send("Update process failed with internal server issue")
+    }
 })
 
-router.delete(userUrl, (req, res) => {
-    // User service
+router.delete(`${userUrl}/:id`, (req, res) => {
+    try {
+        const userId = req.params.id
+        await userService.deleteUser(userId)
+        res.status(204).send("User deleted")
+    } catch (err) {
+        console.error(err)
+        res.status(500).send("Delete process failed with internal server issue")
+    }
 
 })
 
