@@ -54,7 +54,7 @@ router.patch(`${userUrl}/:id`, async (req, res) => {
     }
 })
 
-router.delete(`${userUrl}/:id`, (req, res) => {
+router.delete(`${userUrl}/:id`, async (req, res) => {
     try {
         const userId = req.params.id
         await userService.deleteUser(userId)
