@@ -25,7 +25,20 @@ router.get(userUrl, async (req, res) => {
 })
 
 router.post(userUrl, (req, res) => {
-   
+    try {
+        const user = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+            role: req.body.role
+        })
+        await userService.saveUser(user)
+        res.status(201).send("Saved user data successfully")
+    } catch (err) {
+        console.log(err)
+        res.status(500).send("Save data failed with internal server issue")
+    }
 
 })
 
