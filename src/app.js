@@ -3,10 +3,19 @@ const app  = express()
 const PORT  = 3500
 const userRoutes = require("./routes/userRoutes")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 // User ---> userRoutes
 // Climate actions ----> climateActionRoutes
 app.use(express.json())
+// Add CORS config
+
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET","POST","PUT","PATCH","DELETE","UPDATE"],
+    allowedHeaders: ["Content-Type","Authorization"],
+    credentials: true
+}))
 
 app.get("/",(req,res)=>{
    res.send("Hello EcoCheck-2026 | CMJD -114/115")
