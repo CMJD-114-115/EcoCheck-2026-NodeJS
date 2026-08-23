@@ -6,7 +6,8 @@ const User = require("../model/userModel")
 
 router.get(userUrl, async (req, res) => {
     try {
-        const allUsers = await serService.getAllUsers()
+        const allUsers = await userService.getAllUsers()
+        console.log(allUsers)
         const users = allUsers.map(user => ({
             userId: user.userId,
             firstName: user.firstName,
