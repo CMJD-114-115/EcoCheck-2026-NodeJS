@@ -29,3 +29,5 @@ async function findUser(email){
         console.error(err)
     }
 }
+
+module.exports = { addUser, findUser }
