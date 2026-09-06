@@ -4,10 +4,10 @@ async function getAllUsers() {
     return User.find()
 }
 
-async function saveUser(user) {
-    const saveUser = new User(user)
-    return saveUser.save()
-}
+// async function saveUser(user) {
+//     const saveUser = new User(user)
+//     return saveUser.save()
+// }
 
 async function updateUser(userId, user) {
     return User.findOneAndUpdate({ userId: userId }, user, { new: true })
