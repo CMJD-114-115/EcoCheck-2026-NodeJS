@@ -3,8 +3,9 @@ const router = express.Router()
 const userUrl = "/users"
 const userService = require("../service/userService")
 const User = require("../model/userModel")
+const authToken = require("../middleware/authToken")
 
-router.get(userUrl, async (req, res) => {
+router.get(userUrl, authToken, async (req, res) => {
     try {
         const allUsers = await userService.getAllUsers()
         console.log(allUsers)
