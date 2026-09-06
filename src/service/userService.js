@@ -17,4 +17,4 @@ async function deleteUser(userId) {
     return User.findOneAndDelete(userId)
 }
 
-module.exports = { getAllUsers, saveUser, updateUser, deleteUser }
+module.exports = { getAllUsers, updateUser, deleteUser }

@@ -3,6 +3,7 @@ const app  = express()
 require("dotenv").config()
 const PORT  = process.env.PORT || 3600
 const userRoutes = require("./routes/userRoutes")
+const authRoutes = require("./routes/authRoutes")
 const mongoose = require("mongoose")
 const cors = require("cors")
 
@@ -21,7 +22,8 @@ app.use(cors({
 app.get("/",(req,res)=>{
    res.send("Hello EcoCheck-2026 | CMJD -114/115")
 })
-app.use("/ecocheck/api/v1",userRoutes)
+app.use("/ecocheck/api/v1", userRoutes)
+app.use("/ecocheck/api/v1", authRoutes)
 
 // DB connection with Mongo DB
 

@@ -3,8 +3,9 @@ const { v4: uuid4 } = require("uuid")
 const bcrypt = require("bcryptjs")
 
 async function addUser(user) {
+    console.log("To be save user is", user)
     try {
-        const hashPassword = await bcrypt.hash(user, password, 10)
+        const hashPassword = await bcrypt.hash(user.password, 10)
         const newUser = new User({
             userId: uuid4(),
             firstName: user.firstName,

@@ -46,3 +46,5 @@ router.post(`${authUrl}/login`,async (req,res)=>{
 
 
 })
+
+module.exports = router
