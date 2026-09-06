@@ -1,6 +1,7 @@
 const express = require("express")
 const app  = express()
-const PORT  = 3500
+require("dotenv").config()
+const PORT  = process.env.PORT || 3600
 const userRoutes = require("./routes/userRoutes")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -32,6 +33,6 @@ mongoose.connect("mongodb://localhost:27017/ecoChk-2026-CMJD")
     console.error("Failed to connect mongoDB",err)
 })
 app.listen(PORT,()=>{
-    console.log("EcoCheck-2026 Running");
+    console.log("EcoCheck-2026 Running with the PORT: ",PORT);
     
 })
