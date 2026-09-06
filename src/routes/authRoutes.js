@@ -2,7 +2,10 @@ const express = require("express")
 const router = express.Router()
 const authUrl = "/auth"
 const User = require("../model/userModel")
-
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const jwtSecret = process.env.JWT_SECRET
+const jwtExpireIn = process.env.JWT_EXPIRE_IN
 
 //Sign Up
 
